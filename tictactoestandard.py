@@ -1,3 +1,8 @@
+# Standard two player tic tac toe game
+# insted of X and O use red and blue
+# Made by Emmanuel 
+# May 1, 2020
+
 import turtle
 import time
 
@@ -15,26 +20,28 @@ pen.up()
 pen.hideturtle()
 
 
-# welcome screen animates 'Tic' 'Tac' 'Toe' respectively
+# welcome screen
 class welcome_screen:
-
-	pen.goto(-70,-20)
-	pen.write("Loading...",font=("Courier",20,"normal"))
 
 	pen.goto(-270,0) 
 	pen.write("Tic",font=("Courier",60,"normal"))
 
-	time.sleep(0.6)
+	time.sleep(.6)
 	
 	pen.goto(-100,0)
 	pen.write("Tac",font=("Courier",60,"normal"))
 
-	time.sleep(0.6)
+	time.sleep(.6)
 	
 	pen.goto(70,0) 
 	pen.write("Toe",font=("Courier",60,"normal"))
 
-	time.sleep(1)
+	time.sleep(0.7)
+
+	pen.goto(-130,-20)
+	pen.write("made with turtle graphics",font=("Courier",14,"normal"))
+
+	time.sleep(2)
 	pen.clear()
 
 # defines square object
@@ -93,6 +100,7 @@ player.color("blue")
 pen.goto(-190,310)
 pen.write("starts",align='center',font=("Courier",15,"normal"))
 
+# switchs player
 def switch_player(n,val):
 
 	pen.clear()
@@ -117,12 +125,6 @@ def switch_player(n,val):
 # x,y are coordinate for the cliked position
 def boundary_condition(n,x,y): 
 	return x < l[n].posx()[0] and x > l[n].posx()[2] and y < l[n].posy()[0] and y > l[n].posy()[2]
-
-# toggled is used to identifies which squares have been played
-# 0 means the square has not been played or color has changed
-# 1 means the square has been played or color has changed
-toggled = [0 for i in range(9)]
-toggle = True
 
 # checks for a winner
 def check(color):
@@ -162,6 +164,13 @@ def display_winner(color):
 		pen.color("black")
 		pen.write("NO ONE WINS",align='center',font=("TimesNewRoman",15,"bold"))
 		wn.ontimer(replay,1500)
+
+
+# toggled is used to identifies which squares have been played
+# 0 means the square has not been played or color has changed
+# 1 means the square has been played or color has changed
+toggled = [0 for i in range(9)]
+toggle = True
 
 # mouse event handeler
 def click(x,y):	
